@@ -1,0 +1,7 @@
+.nav-bottom .nav-bottom-item {
+    font-weight: 500;
+}
+.nav-bottom .nav-bottom-item.active {
+    color: #635bff;
+    font-weight: bold;
+}
