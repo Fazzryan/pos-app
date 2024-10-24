@@ -25,8 +25,8 @@
                                         width="100">
                                 </a>
                                 <div class="text-center">
-                                    <h2 class="text-dark">MENU DIGITAL COFFE ANTRE</h2>
-                                    <p>Senang bertemu denganmu lagi. <br>Masuk ke akun Anda di bawah ini!</p>
+                                    <h4 class="text-dark">Selamat Datang!</h4>
+                                    <p>Senang bertemu denganmu lagi. Masuk ke akun Anda di bawah ini!</p>
                                     {{-- <p>Glad to see you again <br>Login to your account below</p> --}}
                                 </div>
                                 @include('be.layouts.app_session')
