@@ -6,7 +6,7 @@
             {{-- <a href="./index.html" class="text-nowrap logo-img">
                 <img src="{{ asset('assets/be/images/logos/logo.png') }}" width="60" alt="logo" />
             </a> --}}
-            <h4 class="fw-bolder text-uppercase">coffe shop</h4>
+            <h4 class="fw-bolder text-uppercase">NETTARE JUICE</h4>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
             </div>
