@@ -20,7 +20,8 @@
                     <div class="col-md-8 col-lg-5 col-xl-4">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                                <a href="javascript:void(0)"
+                                    class="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="{{ asset('assets/be/images/logos/logo.png') }}" alt="logo"
                                         width="100">
                                 </a>
