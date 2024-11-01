@@ -40,9 +40,8 @@
             @include('be.layouts.app_session')
             <div class="card">
                 <div class="card-body pt-21 pb-md-1">
-                    <div class="row flex-nowrap">
-                        {{-- jml menu --}}
-                        <div class="col">
+                    <div class="row flex-nowraap">
+                        <div class="col-md-4 col-lg-3">
                             <div class="card border">
                                 <div class="card-body text-center px-9 pb-4">
                                     <div
@@ -59,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-4 col-lg-3">
                             <div class="card border">
                                 <div class="card-body text-center px-9 pb-4">
                                     <div
@@ -76,7 +75,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-4 col-lg-3">
                             <div class="card border">
                                 <div class="card-body text-center px-9 pb-4">
                                     <div
@@ -93,7 +92,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-4 col-lg-3">
                             <div class="card border">
                                 <div class="card-body text-center px-9 pb-4">
                                     <div
