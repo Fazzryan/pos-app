@@ -15,6 +15,11 @@
         {!! \Session::get('success') !!}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+@elseif(\Session::has('info'))
+    <div class="alert alert-info fw-bold alert-dismissible border-0 fade show" role="alert">
+        {!! \Session::get('info') !!}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 @elseif(\Session::has('failed'))
     <div class="alert alert-danger fw-bold alert-dismissible border-0 fade show" role="alert">
         {!! \Session::get('failed') !!}

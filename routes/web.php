@@ -107,5 +107,6 @@ Route::group(['as' => 'be.', 'prefix' => '/dashboard', 'middleware' => ['CheckLo
     //--------------------------------------------------------------------------
     Route::group(['as' => 'laporan.', 'prefix' => '/laporan'], function () {
         Route::get('/', [ConLaporan::class, 'index'])->name('list');
+        Route::get('/cetak-laporan', [ConLaporan::class, 'cetakLaporan'])->name('cetakLaporan');
     });
 });
