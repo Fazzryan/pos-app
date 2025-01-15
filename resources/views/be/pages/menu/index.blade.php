@@ -53,6 +53,7 @@
                                     <th class="text-dark text-start">Kategori</th>
                                     <th class="text-dark text-start">Nama Menu</th>
                                     <th class="text-dark text-start">Harga</th>
+                                    <th class="text-dark text-start">Modal</th>
                                     <th class="text-dark text-start">Stok</th>
                                     <th class="text-dark">
                                         <div class="d-flex align-items-center">
@@ -75,6 +76,9 @@
                                         <td class="text-dark text-start">{{ $item->nm_kategori }}</td>
                                         <td class="text-dark text-start">{{ $item->nm_menu }}</td>
                                         <td class="text-dark text-start">Rp {{ number_format($item->harga, 0, '.', '.') }}
+                                        </td>
+                                        <td class="text-dark text-start">Rp
+                                            {{ number_format($item->harga_modal, 0, '.', '.') }}
                                         </td>
                                         <td class="text-dark text-start">{{ number_format($item->stok, 0, '.', '.') }}</td>
                                         <td>
@@ -147,9 +151,14 @@
                                 <input type="number" class="form-control" id="add-harga" name="harga" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="add-stok" class="form-label">Stok</label>
-                                <input type="text" class="form-control" id="add-stok" name="stok" required>
+                                <label for="add-harga_modal" class="form-label">Harga Modal</label>
+                                <input type="text" class="form-control" id="add-harga_modal" name="harga_modal"
+                                    required>
                             </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="add-stok" class="form-label">Stok</label>
+                            <input type="text" class="form-control" id="add-stok" name="stok" required>
                         </div>
                         <div class="mb-3">
                             <label for="add-foto" class="form-label">Foto</label>
@@ -197,9 +206,14 @@
                                 <input type="text" class="form-control" id="edt-harga" name="harga" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="edt-stok" class="form-label">Stok</label>
-                                <input type="text" class="form-control" id="edt-stok" name="stok" required>
+                                <label for="edt-harga_modal" class="form-label">Harga Modal</label>
+                                <input type="text" class="form-control" id="edt-harga_modal" name="harga_modal"
+                                    required>
                             </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edt-stok" class="form-label">Stok</label>
+                            <input type="text" class="form-control" id="edt-stok" name="stok" required>
                         </div>
                         <div class="mb-3">
                             <label for="add-foto" class="form-label">Foto Baru</label>
@@ -262,6 +276,7 @@
                     $("#edt-nm_menu").val("{{ $val->nm_menu }}");
                     $("#edt-kategori_id").val("{{ $val->kategori_id }}");
                     $("#edt-harga").val("{{ $val->harga }}");
+                    $("#edt-harga_modal").val("{{ $val->harga_modal }}");
                     $("#edt-stok").val("{{ $val->stok }}");
                     $("#edt-img_foto").attr("src", "{{ asset('assets/be/images/menu') . '/' . $val->foto }}");
                 }

@@ -24,16 +24,18 @@ class ConMenu extends Controller
     //--------------------------------------------------------------------------
     public function act_add(Request $request)
     {
-        $nmMenu     = ucwords(strtolower($request->nm_menu));
-        $kategoriId = $request->kategori_id;
-        $harga      = $request->harga;
-        $stok       = $request->stok;
-        $foto       = $request->foto;
+        $nmMenu      = ucwords(strtolower($request->nm_menu));
+        $kategoriId  = $request->kategori_id;
+        $harga       = $request->harga;
+        $harga_modal = $request->harga_modal;
+        $stok        = $request->stok;
+        $foto        = $request->foto;
 
         $dataAdd = array(
             'nm_menu'     => $nmMenu,
             'kategori_id' => $kategoriId,
             'harga'       => $harga,
+            'harga_modal' => $harga_modal,
             'stok'        => $stok,
         );
 
@@ -41,6 +43,7 @@ class ConMenu extends Controller
             'nm_menu'     => 'required|min:3|max:100',
             'kategori_id' => 'required',
             'harga'       => 'required|numeric',
+            'harga_modal' => 'required|numeric',
             'stok'        => 'required|numeric',
             'foto'        => 'required|image|mimes:jpg,png,jpeg|max:2048'
         ]);
@@ -70,6 +73,7 @@ class ConMenu extends Controller
         $nmMenu     = ucwords(strtolower($request->nm_menu));
         $kategoriId = $request->kategori_id;
         $harga      = $request->harga;
+        $harga_modal = $request->harga_modal;
         $stok       = $request->stok;
         $foto       = $request->foto;
 
@@ -77,6 +81,7 @@ class ConMenu extends Controller
             'nm_menu'     => $nmMenu,
             'kategori_id' => $kategoriId,
             'harga'       => $harga,
+            'harga_modal' => $harga_modal,
             'stok'        => $stok,
         );
 
@@ -99,6 +104,7 @@ class ConMenu extends Controller
                         ->where('kategori_id', $kategoriId)
                         ->where('nm_menu', $nmMenu)
                         ->where('harga', $harga)
+                        ->where('harga_modal', $harga_modal)
                         ->where('stok', $stok)->count();
                     if ($cekPerubahan > 0) {
                         return redirect()->back()->with('failed', 'Tidak ada perubahan!');

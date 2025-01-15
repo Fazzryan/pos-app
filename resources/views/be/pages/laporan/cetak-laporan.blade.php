@@ -41,9 +41,6 @@
         @else
             <p>Periode: Bulan {{ \Carbon\Carbon::now()->translatedFormat('F Y') }}</p>
         @endif
-        <div>Total Pendapatan:
-            <span style="font-weight: 600;"> Rp{{ number_format($pendapatanBlnSkrng, 0, ',', '.') }}</span>
-        </div>
     </header>
 
     <table>
@@ -58,7 +55,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse($rekapPenjualan as $key => $rekap)
+            @foreach ($rekapPenjualan as $key => $rekap)
                 <tr>
                     <td>{{ $key + 1 }}</td>
                     <td>{{ \Carbon\Carbon::parse($rekap->tanggal)->translatedFormat('d F Y') }}</td>
@@ -67,11 +64,11 @@
                     <td>Rp {{ number_format($rekap->harga, 0, ',', '.') }}</td>
                     <td>Rp {{ number_format($rekap->total_penjualan, 0, ',', '.') }}</td>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="6" class="text-center">Tidak ada data.</td>
-                </tr>
-            @endforelse
+            @endforeach
+            <tr>
+                <td colspan="5" style="text-align: end; font-weight:bold">Total</td>
+                <td>Rp{{ number_format($pendapatanBlnSkrng, 0, ',', '.') }}</td>
+            </tr>
         </tbody>
     </table>
 
