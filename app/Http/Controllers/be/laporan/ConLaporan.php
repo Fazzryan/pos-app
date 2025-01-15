@@ -41,8 +41,8 @@ class ConLaporan extends Controller
 
         // Cek apakah user memasukkan tanggal pencarian
         if ($request->startDate && $request->endDate) {
-            $startDate = $request->startDate; // Tanggal awal dari input user
-            $endDate = $request->endDate;     // Tanggal akhir dari input user
+            $startDate = $request->startDate;
+            $endDate = $request->endDate;
         }
 
         $pendapatanBlnSkrng = DB::table('transaksi')
@@ -53,19 +53,29 @@ class ConLaporan extends Controller
             ->whereBetween('tgl_trans', [$startDate, $endDate])
             ->count();
 
-        // Query data penjualan
+        // Hitung total modal
+        $totalModal = DB::table('transaksi_list')
+            ->join('transaksi', 'transaksi.kd_trans', '=', 'transaksi_list.kd_trans')
+            ->join('menu', 'menu.id', '=', 'transaksi_list.menu_id')
+            ->whereBetween('transaksi.tgl_trans', [$startDate, $endDate])
+            ->sum(DB::raw('transaksi_list.qty * menu.harga_modal'));
+
+        // Hitung total laba
+        $totalLaba = $pendapatanBlnSkrng - $totalModal;
+
         $rekapPenjualan = DB::table('transaksi_list')
             ->join('transaksi', 'transaksi.kd_trans', '=', 'transaksi_list.kd_trans')
             ->join('menu', 'menu.id', '=', 'transaksi_list.menu_id')
             ->select(
-                DB::raw('DATE(transaksi.tgl_trans) as tanggal'),
                 'menu.nm_menu',
-                DB::raw('SUM(transaksi_list.qty) as jumlah'),
                 'menu.harga',
+                'menu.harga_modal',
+                DB::raw('DATE(transaksi.tgl_trans) as tanggal'),
+                DB::raw('SUM(transaksi_list.qty) as jumlah'),
                 DB::raw('SUM(transaksi_list.total_harga) as total_penjualan')
             )
-            ->whereBetween('transaksi.tgl_trans', [$startDate, $endDate]) // Filter bulan sekarang
-            ->groupBy('tanggal', 'menu.nm_menu', 'menu.harga')
+            ->whereBetween('transaksi.tgl_trans', [$startDate, $endDate]) 
+            ->groupBy('tanggal', 'menu.nm_menu', 'menu.harga', 'menu.harga_modal')
             ->orderBy('tanggal', 'asc')
             ->get();
 
@@ -76,6 +86,7 @@ class ConLaporan extends Controller
         
         return view('be.pages.laporan.index', compact(
             'rekapPenjualan',
+            'totalLaba',
             'totalTransBlnSkrng',
             'pendapatanBlnSkrng'
         ));

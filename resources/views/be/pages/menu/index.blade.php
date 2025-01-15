@@ -53,7 +53,7 @@
                                     <th class="text-dark text-start">Kategori</th>
                                     <th class="text-dark text-start">Nama Menu</th>
                                     <th class="text-dark text-start">Harga</th>
-                                    <th class="text-dark text-start">Modal</th>
+                                    <th class="text-dark text-start">Harga Modal</th>
                                     <th class="text-dark text-start">Stok</th>
                                     <th class="text-dark">
                                         <div class="d-flex align-items-center">

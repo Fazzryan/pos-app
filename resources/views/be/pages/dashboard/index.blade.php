@@ -86,7 +86,7 @@
                                     <h6 class="fw-normal fs-3 mb-1">Total Transaksi</h6>
                                     <h4 class="mb-3 mt-2 d-flex align-items-center justify-content-center gap-1">
                                         {{ number_format($totalTransaksi, 0, '.', '.') }}</h4>
-                                    <a href="{{ route('be.transaksi.list') }}"
+                                    <a href="{{ route('be.riwayat.list') }}"
                                         class="btn btn-primary fs-2 fw-semibold text-nowrap">Lihat
                                         Detail</a>
                                 </div>

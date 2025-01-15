@@ -93,6 +93,15 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card h-100 bg-white border mb-3">
+                <div class="card-header text-white fw-semibold bg-success text-center">Laporan Laba</div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">Rp {{ number_format($totalLaba, 0, '.', '.') }}</h5>
+                    <p class="card-text">Jumlah laba yang diperoleh setelah dikurangi biaya modal dan biaya operasional.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row">
@@ -110,6 +119,7 @@
                                 <th class="text-dark text-start">Nama Menu</th>
                                 <th class="text-dark text-start">Jumlah</th>
                                 <th class="text-dark text-start">Harga</th>
+                                <th class="text-dark text-start">Harga Modal</th>
                                 <th class="text-dark text-start">Total Pemasukan</th>
                             </thead>
                             <tbody>
@@ -120,6 +130,9 @@
                                         <td class="text-dark text-start">{{ $rekap->nm_menu }}</td>
                                         <td class="text-dark text-start">{{ $rekap->jumlah }}</td>
                                         <td class="text-dark text-start">Rp {{ number_format($rekap->harga, 0, ',', '.') }}
+                                        </td>
+                                        <td class="text-dark text-start">Rp
+                                            {{ number_format($rekap->harga_modal, 0, ',', '.') }}
                                         </td>
                                         <td class="text-dark text-start">
                                             Rp {{ number_format($rekap->total_penjualan, 0, ',', '.') }}</td>
@@ -134,44 +147,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- <div class="col-md-12">
-            <div class="card border">
-                <div class="card-header bg-primary p-">
-                    <h6 class="card-title text-white fw-semibold">Laporan Penjualan Produk</h6>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="tablePenjualanProduk" class="table table-bordered">
-                            <thead>
-                                <th class="text-dark text-start">#</th>
-                                <th class="text-dark text-start">Nama Menu</th>
-                                <th class="text-dark text-start">Sisa Stok</th>
-                                <th class="text-dark text-start">Jumlah Terjual</th>
-                                <th class="text-dark text-start">Harga Satuan</th>
-                                <th class="text-dark text-start">Total Pemasukan</th>
-                            </thead>
-                            <tbody>
-                                @foreach ($arrList as $key => $item)
-                                    <tr>
-                                        <td class="text-dark text-start">{{ $key + 1 }}</td>
-                                        <td class="text-dark text-start">{{ $item['nm_menu'] }}</td>
-                                        <td class="text-dark text-start">{{ $item['stok'] }}</td>
-                                        <td class="text-dark text-start">{{ $item['qty'] }}</td>
-                                        <td class="text-dark text-start">Rp
-                                            {{ number_format($item['harga'], 0, '.', '.') }}
-                                        </td>
-                                        <td class="text-dark text-start">Rp
-                                            {{ number_format($item['total_harga'], 0, '.', '.') }}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
     </div>
 @endsection
 @push('js')

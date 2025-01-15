@@ -12,7 +12,9 @@ class ConDashboard extends Controller
     public function index()
     {
         $totalMenu = DB::table('menu')->count();
-        $totalPetugas = DB::table('user')->join('user_autentikasi', 'user.id', '=', 'user_autentikasi.user_id')->count();
+        $totalPetugas = DB::table('user')
+            ->join('user_autentikasi', 'user.id', '=', 'user_autentikasi.user_id')
+            ->count();
         $totalTransaksi = DB::table('transaksi')->count();
 
         $date = date("Y-m-d");
